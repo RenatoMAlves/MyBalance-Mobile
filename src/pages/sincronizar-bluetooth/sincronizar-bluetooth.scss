@@ -1,0 +1,26 @@
+page-sincronizar-bluetooth {
+    #disp-conectados ion-icon{
+        font-size:1.8em;
+    }
+    #desab{   
+        display: flex !important;
+        align-content: center !important;
+        align-items: center!important;
+        height: 80%;
+    }
+    #desab ion-label {
+        text-align: center;
+        padding: 50px 0 50px 0;
+    }
+    #refresh{
+        text-align: center;
+    }
+    ion-spinner{
+        align-content: center;
+        width: 100%;
+    }
+
+    h4.nome{
+        margin-top: 0 !important;
+    }
+}

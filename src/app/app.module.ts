@@ -1,39 +1,41 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { myBalance } from './app.component';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { HttpModule } from '@angular/http';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CadastroPageModule } from '../pages/cadastro/cadastro.module';
+import { SincronizarBluetoothPageModule } from '../pages/sincronizar-bluetooth/sincronizar-bluetooth.module';
 
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
+    myBalance,
     HomePage,
     TabsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(myBalance),
+    CadastroPageModule,
+    HttpModule,
+    SincronizarBluetoothPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
+    myBalance,
     HomePage,
-    TabsPage
+    TabsPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    BluetoothSerial,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

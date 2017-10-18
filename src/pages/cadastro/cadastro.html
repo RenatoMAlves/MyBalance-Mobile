@@ -1,0 +1,75 @@
+<!--
+  Generated template for the CadastroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <!-- Escrever Nome -->
+    <ion-item>
+      <ion-label stacked>Nome Completo</ion-label>
+      <ion-input type="text" [(ngModel)]="nome"></ion-input>
+    </ion-item>
+
+    <!-- Escrever E-mail -->
+    <ion-item>
+      <ion-label stacked>E-mail</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    
+    <!-- Escrever E-mail -->
+    <ion-item>
+      <ion-label stacked>Data de nascimento</ion-label>
+      <ion-input type="date" [(ngModel)]="datanascimento" placeholder=""></ion-input>
+    </ion-item>
+
+    <!-- Escrever CPF -->
+    <ion-item>
+      <ion-label stacked>CPF</ion-label>
+      <ion-input type="text" [(ngModel)]="cpf" maxlength="11"></ion-input>
+    </ion-item>
+
+    <!-- Escrever Senha -->
+    <ion-item>
+      <ion-label stacked>Senha (6-12 caracteres)</ion-label>
+      <ion-input type="password" [(ngModel)]="senha" minlength="6" maxlength="12"></ion-input>
+    </ion-item>
+
+    <!-- Escrever Senha -->
+    <ion-item>
+      <ion-label stacked>Repetir Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="repetir_senha" minlength="6" maxlength="12"></ion-input>
+    </ion-item>
+
+    <!-- Escrever Altura -->
+    <ion-item>
+      <ion-label stacked>Altura</ion-label>
+      <ion-input type="number" placeholder [(ngModel)]="altura"></ion-input>
+    </ion-item>
+
+    <br/>
+    <!-- Seleção de Sexo -->
+    <ion-item>
+      <ion-label>Sexo</ion-label>
+      <ion-select [(ngModel)]="sexo">
+        <ion-option value="M">Masculino</ion-option>
+        <ion-option value="F">Feminino</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <br/>
+  <button ion-button icon-left block color="secondary" type="submit" (click)="onSubmit()">
+    <ion-icon name="md-checkmark"></ion-icon>
+    Confirmar
+  </button><br/>
+</ion-content>
