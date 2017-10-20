@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "52669270901",
+    "firebase_url": "https://fir-mybalance.firebaseio.com",
+    "project_id": "firebase-mybalance",
+    "storage_bucket": "firebase-mybalance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52669270901:android:7fb44d832165fec3",
+        "android_client_info": {
+          "package_name": "com.mybalance.push"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52669270901-4l83apbate79kc4ba75cm8oucc53m233.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mybalance.push",
+            "certificate_hash": "7badb8f51757f3e490786e3b7480eb89c854f15b"
+          }
+        },
+        {
+          "client_id": "52669270901-oh81d4oqvqui9vtc74a8v725p7r1g8la.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF5UI__CVBRDFTEvWZyfRGiOqF5PXyVbQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52669270901-oh81d4oqvqui9vtc74a8v725p7r1g8la.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
