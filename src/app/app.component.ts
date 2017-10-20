@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { NotificationPage } from "../pages/notification/notification";
+import { CadastroPage } from "../pages/cadastro/cadastro";
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,8 @@ export class myBalance {
     });
     this.pages = [
       { title: 'Home', component: TabsPage },
-      { title: 'Notificações', component: NotificationPage }
+      { title: 'Notificações', component: NotificationPage },
+      { title: 'Cadastro', component: CadastroPage}
     ];
   }
   openPage(page) {

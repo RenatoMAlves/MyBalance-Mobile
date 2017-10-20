@@ -4,6 +4,7 @@ import { Usuario } from "./Usuario";
 import { TabsPage } from '../tabs/tabs';
 import { AlertController } from 'ionic-angular';
 import { UsuarioService } from './cadastro.service';
+import { App, MenuController } from 'ionic-angular';
 
 /**
  * Generated class for the CadastroPage page.
@@ -30,7 +31,9 @@ export class CadastroPage {
   datacadastro: string;
   status: string;
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private usuarioService: UsuarioService) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,
+     private usuarioService: UsuarioService,app: App, menu: MenuController) {
+      menu.enable(true);
   }
 
   onSubmit() {

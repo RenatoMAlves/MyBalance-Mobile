@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Sincronizar Bluetooth</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+      Sincronizar Bluetooth
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -23,7 +28,7 @@
     <ion-toggle checked="habilitado" [(ngModel)]="habilitado" disabled color="secondary"></ion-toggle>
   </ion-item>
 
-  <!-- <ion-spinner style="text-align: center;" name="crescent" *ngIf="habilitado"></ion-spinner> -->
+  <ion-spinner style="text-align: center;" name="crescent" *ngIf="!status"></ion-spinner>
 
   <ion-list *ngIf="habilitado" id="disp-conectados">
     <ion-list-header>

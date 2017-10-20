@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { NotificationService } from '../../notification.services';
+import { App, MenuController } from 'ionic-angular';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
@@ -22,15 +23,11 @@ export class NotificationPage {
   notificacoes = {id: null, message: null};
   notifications : Observable<any[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform, private alert: AlertController, public notificationService: NotificationService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform, private alert: AlertController, public notificationService: NotificationService,app: App, menu: MenuController) {
+    menu.enable(true);
     this.onNotification();
     this.notifications = notificationService.getNotificacoes();
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NotificationPage');
-  }
-
 
   async onNotification() {
     try {

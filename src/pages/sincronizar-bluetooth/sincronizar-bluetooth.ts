@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OnInit } from '@angular/core';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { App, MenuController } from 'ionic-angular';
 /**
  * Generated class for the SincronizarBluetoothPage page.
  *
@@ -19,9 +20,11 @@ export class SincronizarBluetoothPage implements OnInit {
   public resultado_bluetooth: any;
   public dispositivos_disponiveis: any[] = [];
   public dispositivos_pareados: any[] = [];
+  public status = false;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public bluetoothSerial: BluetoothSerial) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public bluetoothSerial: BluetoothSerial,app: App, menu: MenuController) {
+    menu.enable(true);
   }
 
   ngOnInit() {
@@ -59,6 +62,7 @@ export class SincronizarBluetoothPage implements OnInit {
   listarDispositivosDisponíveis(){
     this.dispositivos_disponiveis = [];
     this.bluetoothSerial.discoverUnpaired().then((data)=>{
+        this.status = true;
         this.dispositivos_disponiveis = data;
       },
       (error)=>{

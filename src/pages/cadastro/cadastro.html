@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Cadastro</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+      Cadastro
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -26,7 +31,7 @@
       <ion-label stacked>E-mail</ion-label>
       <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
-    
+
     <!-- Escrever E-mail -->
     <ion-item>
       <ion-label stacked>Data de nascimento</ion-label>
@@ -71,5 +76,6 @@
   <button ion-button icon-left block color="secondary" type="submit" (click)="onSubmit()">
     <ion-icon name="md-checkmark"></ion-icon>
     Confirmar
-  </button><br/>
+  </button>
+  <br/>
 </ion-content>
