@@ -24,7 +24,8 @@ export class HomePage {
 
   constructor(
                 public navCtrl: NavController,
-                app: App, menu: MenuController,
+                app: App, 
+                menu: MenuController,
                 public http: Http
   ) {
 
