@@ -4,21 +4,39 @@
       <ion-icon name='menu'></ion-icon>
     </button>
     <ion-title>
-      Home
+      Histórico de Peso
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  
+    <ion-fab top right edge>
+      <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+      <ion-fab-list>
+        <button ion-fab><ion-icon name="link"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
+  
+  <!--Gráfico de linha-->
+  <fusioncharts
+      width="360" 
+      height="300"
+      type="scrollline2d"
+      dataFormat="JSON"
+      [dataSource]=dataSource>
+  </fusioncharts>
+  
+  <h3>Peso Atual {{pesoAtual}}</h3>
+  
+  <br />
   <p>
-    This starter project comes with simple tabs-based layout for apps that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Here men from the planet Earth first set foot upon the Moon. July 1969 AD. We came in peace for all mankind.
-  </p>
-  <p>
-    When I orbited the Earth in a spaceship, I saw for the first time how beautiful our planet is. Mankind, let us preserve and
-    increase this beauty, and not destroy it!
-  </p>
-</ion-content>
+  <!--Lista de Pesos-->
+  <ion-list>
+    <button ion-item *ngFor="let p of pesos" (click)="delPeso(p.id)">
+      {{p.id}} - {{ p.peso }} Kg - {{ p.datapesagem }}
+    </button>
+  </ion-list></p>
+  
+  </ion-content>
+  

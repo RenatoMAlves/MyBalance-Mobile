@@ -18,6 +18,21 @@ import { CadastroPageModule } from '../pages/cadastro/cadastro.module';
 import { SincronizarBluetoothPageModule } from '../pages/sincronizar-bluetooth/sincronizar-bluetooth.module';
 import { NotificationService } from '../notification.services';
 
+
+// Fix for "Expression has changed after it was checked. Previous value: container-"
+import {enableProdMode} from '@angular/core'
+enableProdMode();
+
+// Import angular2-fusioncharts
+import { FusionChartsModule } from 'angular2-fusioncharts';
+
+// Import FusionCharts library
+import * as FusionCharts from 'fusioncharts';
+// Load FusionCharts Charts module
+import Charts from "fusioncharts/fusioncharts.charts";
+// Load themes
+import themes from "fusioncharts/themes/fusioncharts.theme.fint";
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDS8_GafE0BIEhI5n6J8imYskvV8mKglEs",
   authDomain: "fir-mybalance.firebaseapp.com",
@@ -41,6 +56,7 @@ export const firebaseConfig = {
     HttpModule,
     SincronizarBluetoothPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    FusionChartsModule.forRoot(FusionCharts, Charts, themes),
     AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
