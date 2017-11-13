@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { App, MenuController } from 'ionic-angular';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage{
   
     options: RequestOptions;
     headers= new Headers();
@@ -28,13 +28,17 @@ export class HomePage {
                 menu: MenuController,
                 public http: Http
   ) {
-
     menu.enable(true);
     this.headers.append( 'Content-Type', 'application/json' );
     this.options = new RequestOptions({ headers: this.headers });
-
     this.atualizarPesos();
   }
+
+  ionViewWillEnter() {
+    this.atualizarPesos();
+    //console.log("this function will be called every time you enter the view");
+}
+
   
     public atualizarPesos(){
       this.http.get(this.apiUrl + "/pesos?idusuario=" + this.idUser)
@@ -111,5 +115,7 @@ export class HomePage {
       //this.pesos.splice(idPeso, 1);
       //this.atualizarPesos();
     }
+
+    
 
 }
