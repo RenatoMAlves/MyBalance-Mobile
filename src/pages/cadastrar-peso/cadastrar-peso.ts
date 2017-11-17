@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
-
-/**
- * Generated class for the CadastrarPesoPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -28,7 +21,8 @@ export class CadastrarPesoPage {
   constructor(
                 public navCtrl: NavController, 
                 public navParams: NavParams,
-                public http: Http
+                public http: Http,
+                public alertCtrl: AlertController
   ) {
     console.log(this.pesos);
   }
@@ -47,10 +41,17 @@ export class CadastrarPesoPage {
       this.http.post(this.url + '/pesos', body, options)
                 .map(res => { res.json })
                 .subscribe( data =>
-                  console.log("Depois do post" + data)
+                  this.alertaPeso()
                 )
     }
 
-  
+    alertaPeso(){
+        let alert = this.alertCtrl.create({
+          title: 'Sucesso',
+          subTitle: 'Peso cadastrado com sucesso.',
+          buttons: ['OK']
+        });
+        alert.present();
+    }
 
 }

@@ -1,3 +1,42 @@
 page-home {
 
 }
+
+.principal{ 
+    width: 220px; 
+    text-align:center;
+    display: table;
+}
+.coluna-1{ 
+     width: 160px;
+     display: table-cell;
+     border:none;
+     vertical-align:middle;
+     height:75px;
+     font-size: 16pt;
+     font-family: Verdana, Geneva, Arial, sans-serif;
+ 
+}
+.coluna-2{ 
+     width: 70px;
+     display: table-cell;  
+     border:none;
+     vertical-align:middle;
+}
+
+#circulo{
+    background:#fa0c01;
+    color:#fff;
+    width:60px;
+    height:60px;
+    line-height:60px;
+    vertical-align:middle;
+    text-align:center;
+    font-size:18px;
+}
+
+#circulo{
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+}

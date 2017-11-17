@@ -33,6 +33,7 @@ import Charts from "fusioncharts/fusioncharts.charts";
 // Load themes
 import themes from "fusioncharts/themes/fusioncharts.theme.fint";
 import { CadastrarPesoPageModule } from '../pages/cadastrar-peso/cadastrar-peso.module';
+import { LoginPageModule } from '../pages/login/login.module';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDS8_GafE0BIEhI5n6J8imYskvV8mKglEs",
@@ -59,7 +60,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     FusionChartsModule.forRoot(FusionCharts, Charts, themes),
     AngularFireDatabaseModule,
-    CadastrarPesoPageModule
+    CadastrarPesoPageModule, 
+    LoginPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
