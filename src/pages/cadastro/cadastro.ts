@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Usuario } from "./Usuario";
 import { TabsPage } from '../tabs/tabs';
 import { AlertController } from 'ionic-angular';
-import { UsuarioService } from './cadastro.service';
+import { UsuarioService } from './usuario.service';
 import { App, MenuController } from 'ionic-angular';
 
 /**
@@ -30,6 +30,7 @@ export class CadastroPage {
   sexo: string;
   datacadastro: string;
   status: string;
+  userId: any = 3;
 
   constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,
      private usuarioService: UsuarioService,app: App, menu: MenuController) {
@@ -78,5 +79,11 @@ export class CadastroPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  excluirConta(){
+    this.usuarioService.delete(this.userId).subscribe(
+      status => console.log('sucesso')
+    );
   }
 }

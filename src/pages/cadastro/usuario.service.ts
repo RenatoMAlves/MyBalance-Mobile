@@ -26,9 +26,14 @@ export class UsuarioService {
             sexo: dadosUsuario.sexo,
             datacadastro: dadosUsuario.datacadastro,
         }
-        console.log(usuario);
         return this.http.post('http://localhost:3000/usuarios', JSON.stringify(usuario), this.options)
             .map(response => response.json())
             .catch((error:any) => Observable.throw(error.json().error || 'Erro ao conectar ao servidor.'));
     }
+
+    delete(idUsuario: number) {
+        return this.http.delete('http://localhost:3000/usuarios/' + idUsuario)
+            .map(response => response.json())
+            .catch((error:any) => Observable.throw(error.json().error || 'Erro ao conectar ao servidor.'));
+    }    
 }

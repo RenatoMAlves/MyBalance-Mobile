@@ -10,7 +10,7 @@ import { CadastroPage } from '../cadastro/cadastro';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = CadastroPage;
+  // tab2Root = CadastroPage;
   tab4Root = SincronizarBluetoothPage;
 
   constructor() {

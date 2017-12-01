@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { CadastroPage } from './cadastro';
-import { UsuarioService } from './cadastro.service';
+import { UsuarioService } from './usuario.service';
 
 @NgModule({
   declarations: [
