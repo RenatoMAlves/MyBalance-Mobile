@@ -7,8 +7,3 @@ Este aplicativo foi elaborado com base nos requisitos apresentados na disciplina
 ## Configurações para Notificações Push
 
 Execute `npm install angularfire2 firebase promise-polyfill --save` para instalar o módulo [AngularFire2] (https://github.com/angular/angularfire2/blob/master/docs/ionic/v3.md) que permite a comunicação com a API Firebase.
-<<<<<<< HEAD
-
-Execute `cordova plugin add cordova-plugin-fcm --save` para instalar o plugin [Google Firebase Cloud Messaging Cordova Push Plugin] (https://github.com/fechanique/cordova-plugin-fcm).
-=======
->>>>>>> origin/Notificacoes-push
