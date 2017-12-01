@@ -5,23 +5,27 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Notificações</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+      Notificações
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
   <ion-card *ngFor="let notificacao of notifications | async">
     <ion-card-header>
-      {{notificacao.id | json}}
-    </ion-card-header>
+      {{notificacao.dataEnvio | json}}
+    </ion-card-header>  
     <ion-card-content>
       {{notificacao.message | json}}
     </ion-card-content>
   </ion-card>
   <div padding>
     <button ion-button block (click)="limparNotifications()">Limpar</button>
-  </div></ion-content>
+  </div>
+</ion-content>
