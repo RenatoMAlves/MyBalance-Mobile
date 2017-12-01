@@ -12,10 +12,9 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { NotificationPage } from "../pages/notification/notification";
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { CadastroPageModule } from '../pages/cadastro/cadastro.module';
-import { SincronizarBluetoothPageModule } from '../pages/sincronizar-bluetooth/sincronizar-bluetooth.module';
 import { NotificationService } from '../notification.services';
 
 export const firebaseConfig = {
@@ -37,9 +36,7 @@ export const firebaseConfig = {
     BrowserModule,
     IonicModule.forRoot(myBalance),
     IonicPageModule.forChild(myBalance),
-    CadastroPageModule,
     HttpModule,
-    SincronizarBluetoothPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
   ],
@@ -55,7 +52,7 @@ export const firebaseConfig = {
     SplashScreen,
     BluetoothSerial,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    NotificationService
+    NotificationService,
   ]
 })
 export class AppModule {}

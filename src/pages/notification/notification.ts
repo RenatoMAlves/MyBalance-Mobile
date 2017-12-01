@@ -20,10 +20,10 @@ import 'rxjs/add/observable/throw';
   templateUrl: 'notification.html',
 })
 export class NotificationPage {
-  notificacoes = {id: null, message: null};
+  notificacoes = {id: null, message: null, dataEnvio: null};
   notifications : Observable<any[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform, private alert: AlertController, public notificationService: NotificationService,app: App, menu: MenuController) {
+  constructor(public navCtrl: NavController,public alertCtrl: AlertController, public navParams: NavParams, private platform: Platform, private alert: AlertController, public notificationService: NotificationService,app: App, menu: MenuController) {
     menu.enable(true);
     this.onNotification();
     this.notifications = notificationService.getNotificacoes();
@@ -35,6 +35,7 @@ export class NotificationPage {
       FCMPlugin.onNotification((data) => {
         if(data.message != null){
           this.notificacoes.message = data.message;
+          this.notificacoes.dataEnvio = data.dtcadastro;
           this.addnotificacoes()
         }
         this.alert.create({
@@ -50,11 +51,28 @@ export class NotificationPage {
   }
 
   addnotificacoes(){
-    this.notificacoes.id = Date.now();
     this.notificationService.createNotificacao(this.notificacoes);
   }
 
   limparNotifications(){
-    this.notificationService.deleteNotifications();
-  }
+    let confirm = this.alertCtrl.create({
+        title: 'Deletar Notificações',
+        message: 'Você realmente deseja deletar todas as notificações?',
+        buttons: [
+            {
+                text: 'Não',
+                handler: () => {
+                    console.log('Não deletou');
+                }
+            },
+            {
+                text: 'Sim',
+                handler: () => {
+                  this.notificationService.deleteNotifications();;
+                }
+            }
+        ]
+    });
+    confirm.present();
+}
 }
