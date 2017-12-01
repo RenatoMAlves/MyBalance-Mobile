@@ -36,8 +36,7 @@ export class HomePage {
     }
 
     ionViewWillEnter() {
-        this.atualizarPesos();
-        //console.log("this function will be called every time you enter the view");
+        this.atualizarPesos()
     }
 
     public atualizarPesos() {

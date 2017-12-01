@@ -1,19 +1,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>cadastrarPeso</ion-title>
+    <ion-title>Registrar Peso</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div class="corpo">
-    <ion-item>
-      <ion-label floating>Peso</ion-label>
-      <ion-input type="text" [(ngModel)]="pesos.peso"></ion-input>
-    </ion-item>
-  </div>
+  <ion-item>
+    <ion-label floating>Peso</ion-label>
+    <ion-input type="text" [(ngModel)]="pesos.peso"></ion-input>
+  </ion-item>
 
   <p>
     <button ion-button full (click)="savePeso(pesos)">Cadastrar Peso</button>

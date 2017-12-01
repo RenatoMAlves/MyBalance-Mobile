@@ -12,23 +12,30 @@
 <ion-content padding>
 
   <!--Gráfico de linha-->
-  <fusioncharts width="360" height="300" type="scrollline2d" dataFormat="JSON" [dataSource]=dataSource>
+  <fusioncharts 
+      width="360" 
+      height="300" 
+      type="scrollline2d" 
+      dataFormat="JSON" 
+      [dataSource]=dataSource>
   </fusioncharts>
 
   <!--Peso Atual-->
   <div class="principal">
-      <div class="coluna-1">Peso Atual</div>
-      <div class="coluna-2"><div id="circulo"> {{pesoAtual}} Kg </div></div>
- </div>
+    <div class="coluna-1">Peso Atual</div>
+    <div class="coluna-2">
+      <div id="circulo"> {{pesoAtual}} Kg </div>
+    </div>
+  </div>
   <br />
-  
-    <!--Lista de Pesos-->
-  
-    <h5>Lista de Pesos:</h5>
-    <ion-list>
-      <button ion-item *ngFor="let p of pesos" (click)="showConfirmDelPeso(p.id)">
-        <b>{{ p.peso }} Kg</b> em {{ p.datapesagem }}
-      </button>
-    </ion-list>
+
+  <!--Lista de Pesos-->
+  <h5>Registro de Peso:</h5>
+  <ion-list>
+    <ion-item *ngFor="let p of pesos">
+      {{ p.datapesagem }} - <b>{{ p.peso }} Kg</b>
+      <ion-icon name="trash" item-end (click)="showConfirmDelPeso(p.id)"></ion-icon>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
