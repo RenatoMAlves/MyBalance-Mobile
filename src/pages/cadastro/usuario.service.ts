@@ -16,7 +16,7 @@ export class UsuarioService {
         this.options = new RequestOptions({ headers: this.headers });
     }
 
-    save(dadosUsuario: Usuario){
+    save(dadosUsuario: Usuario, datacadastro: any){
         const usuario = {
             nome: dadosUsuario.nome,
             email: dadosUsuario.email,
@@ -24,7 +24,7 @@ export class UsuarioService {
             datanascimento: dadosUsuario.datanascimento,
             altura: dadosUsuario.altura,
             sexo: dadosUsuario.sexo,
-            datacadastro: dadosUsuario.datacadastro,
+            datacadastro: datacadastro,
         }
         return this.http.post('http://localhost:3000/usuarios', JSON.stringify(usuario), this.options)
             .map(response => response.json())
@@ -42,16 +42,16 @@ export class UsuarioService {
         .map(response => response.json());
     }
 
-    update(dadosUsuario: any) {
+    update(dadosUsuario: any, idUser: any, datacadastro: any) {
         const usuario = {
-            id: dadosUsuario.id,
+            id: idUser,
             nome: dadosUsuario.nome,
             email: dadosUsuario.email,
             senha: dadosUsuario.senha,
             datanascimento: dadosUsuario.datanascimento,
             altura: dadosUsuario.altura,
             sexo: dadosUsuario.sexo,
-            datacadastro: dadosUsuario.datacadastro,
+            datacadastro: datacadastro,
         }
         return this.http.put('http://localhost:3000/usuarios/' + usuario.id, JSON.stringify(usuario), this.options)
             .map(response => response.json())

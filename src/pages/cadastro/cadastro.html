@@ -17,57 +17,53 @@
 
 <ion-content padding>
   <ion-list>
-    <!-- Escrever Nome -->
-    <ion-item>
-      <ion-label stacked>Nome Completo</ion-label>
-      <ion-input type="text" [(ngModel)]="nome"></ion-input>
-    </ion-item>
+    <form [formGroup]="formularioCad">
+      <!-- Escrever Nome -->
+      <ion-item [class.valid]="formularioCad.controls.nome.valid" [class.invalid]="!formularioCad.controls.nome.valid && (formularioCad.controls.nome.dirty || submitAttempt)">
+        <ion-label stacked>Nome Completo</ion-label>
+        <ion-input type="text" formControlName="nome"></ion-input>
+      </ion-item>
 
-    <!-- Escrever E-mail -->
-    <ion-item>
-      <ion-label stacked>E-mail</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
+      <!-- Escrever E-mail -->
+      <ion-item [class.valid]="formularioCad.controls.email.valid" [class.invalid]="!formularioCad.controls.email.valid && (formularioCad.controls.email.dirty || submitAttempt)">
+        <ion-label stacked>E-mail</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
 
-    <!-- Escrever Data de Nascimento -->
-    <ion-item>
-      <ion-label stacked>Data de nascimento</ion-label>
-      <ion-input type="date" [(ngModel)]="datanascimento" placeholder=""></ion-input>
-    </ion-item>
+      <!-- Escrever Data de Nascimento -->
+      <ion-item [class.valid]="formularioCad.controls.datanascimento.valid" [class.invalid]="!formularioCad.controls.datanascimento.valid && (formularioCad.controls.datanascimento.dirty || submitAttempt)">
+        <ion-label stacked>Data de nascimento</ion-label>
+        <ion-input type="date" formControlName="datanascimento" placeholder=""></ion-input>
+      </ion-item>
 
-    <!-- Escrever CPF -->
-    <ion-item>
-      <ion-label stacked>CPF</ion-label>
-      <ion-input type="text" [(ngModel)]="cpf" maxlength="11"></ion-input>
-    </ion-item>
+      <!-- Escrever Senha -->
+      <ion-item [class.valid]="formularioCad.controls.senha.valid" [class.invalid]="!formularioCad.controls.senha.valid && (formularioCad.controls.senha.dirty || submitAttempt)">
+        <ion-label stacked>Senha (6-12 caracteres)</ion-label>
+        <ion-input type="password" formControlName="senha" minlength="6" maxlength="12"></ion-input>
+      </ion-item>
 
-    <!-- Escrever Senha -->
-    <ion-item>
-      <ion-label stacked>Senha (6-12 caracteres)</ion-label>
-      <ion-input type="password" [(ngModel)]="senha" minlength="6" maxlength="12"></ion-input>
-    </ion-item>
+      <!-- Escrever Senha -->
+      <ion-item [class.valid]="formularioCad.controls.repetir_senha.valid" [class.invalid]="!formularioCad.controls.repetir_senha.valid && (formularioCad.controls.repetir_senha.dirty || submitAttempt)">
+        <ion-label stacked>Repetir Senha</ion-label>
+        <ion-input type="password" formControlName="repetir_senha" minlength="6" maxlength="12"></ion-input>
+      </ion-item>
 
-    <!-- Escrever Senha -->
-    <ion-item>
-      <ion-label stacked>Repetir Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="repetir_senha" minlength="6" maxlength="12"></ion-input>
-    </ion-item>
+      <!-- Escrever Altura -->
+      <ion-item [class.valid]="formularioCad.controls.altura.valid" [class.invalid]="!formularioCad.controls.altura.valid && (formularioCad.controls.altura.dirty || submitAttempt)">
+        <ion-label stacked>Altura (cm)</ion-label>
+        <ion-input type="number" placeholder formControlName="altura"></ion-input>
+      </ion-item>
 
-    <!-- Escrever Altura -->
-    <ion-item>
-      <ion-label stacked>Altura (cm)</ion-label>
-      <ion-input type="number" placeholder [(ngModel)]="altura"></ion-input>
-    </ion-item>
-
-    <br/>
-    <!-- Seleção de Sexo -->
-    <ion-item>
-      <ion-label>Sexo</ion-label>
-      <ion-select [(ngModel)]="sexo">
-        <ion-option value="M">Masculino</ion-option>
-        <ion-option value="F">Feminino</ion-option>
-      </ion-select>
-    </ion-item>
+      <br/>
+      <!-- Seleção de Sexo -->
+      <ion-item [class.valid]="formularioCad.controls.sexo.valid" [class.invalid]="!formularioCad.controls.sexo.valid && (formularioCad.controls.sexo.dirty || submitAttempt)">
+        <ion-label>Sexo</ion-label>
+        <ion-select formControlName="sexo">
+          <ion-option value="M" checked="true">Masculino</ion-option>
+          <ion-option value="F">Feminino</ion-option>
+        </ion-select>
+      </ion-item>
+    </form>
   </ion-list>
   <br/>
   <button ion-button icon-left block color="secondary" type="submit" (click)="onSubmit()">

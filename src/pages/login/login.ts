@@ -5,6 +5,7 @@ import { OnInit } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { TabsPage } from '../tabs/tabs';
+import { MenuController } from 'ionic-angular';
 import { CadastroPage } from '../cadastro/cadastro';
 
 /**
@@ -27,10 +28,12 @@ export class LoginPage {
     public navParams: NavParams,
     private storage: Storage,
     public usuarioService: UsuarioService,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    public menu: MenuController) {
   }
 
   ngOnInit() {
+    this.menu.enable(false, '');
     this.storage.get('email').then((email) => {
       this.storage.get('senha').then((senha)=>{
         if(email != null && senha != null)
@@ -68,37 +71,37 @@ export class LoginPage {
 
   autenticar(){
     // Apenas para teste
-    this.navCtrl.push(TabsPage)
+    // this.navCtrl.push(TabsPage)
 
-    // this.usuarioService.getUsuariosByEmail(this.email).subscribe(data => {
-    //   if(data == ""){
-    //     let alert = this.alertCtrl.create({
-    //       title: 'Email não encontrado',
-    //       subTitle: 'Por favor insira o endereço de e-mail informado no momento do cadastro',
-    //       buttons: ['Dismiss']
-    //     });
-    //     alert.present();
-    //   }
-    //   else{
-    //     if(this.verificaCredenciais(data[0].senha)){
-    //       this.salvarSessaoUsuario(data[0].id)
-    //       this.navCtrl.push(TabsPage)
-    //     }
-    //     else{
-    //       console.log(data)
-    //       let alert = this.alertCtrl.create({
-    //         title: 'Credenciais Inválidas',
-    //         subTitle: 'Nome de usuário ou senha incorretos',
-    //         buttons: ['Dismiss']
-    //       });
-    //       alert.present();
-    //     }
+    this.usuarioService.getUsuariosByEmail(this.email).subscribe(data => {
+      if(data == ""){
+        let alert = this.alertCtrl.create({
+          title: 'Email não encontrado',
+          subTitle: 'Por favor insira o endereço de e-mail informado no momento do cadastro',
+          buttons: ['Dismiss']
+        });
+        alert.present();
+      }
+      else{
+        if(this.verificaCredenciais(data[0].senha)){
+          this.salvarSessaoUsuario(data[0].id)
+          this.navCtrl.push(TabsPage)
+        }
+        else{
+          console.log(data)
+          let alert = this.alertCtrl.create({
+            title: 'Credenciais Inválidas',
+            subTitle: 'Nome de usuário ou senha incorretos',
+            buttons: ['Dismiss']
+          });
+          alert.present();
+        }
 
-    //   }
-    // },
-    // erro => {
-    //   console.log(erro)
-    // });
+      }
+    },
+    erro => {
+      console.log(erro)
+    });
   }
 
   verificaCredenciais(senhaUsuario: any){
