@@ -15,5 +15,4 @@ import { UsuarioService } from './usuario.service';
   ],  
 })
 export class CadastroPageModule {
-
 }

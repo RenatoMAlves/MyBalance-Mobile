@@ -7,9 +7,6 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button menuToggle icon-only>
-      <ion-icon name='menu'></ion-icon>
-    </button>
     <ion-title>
       Cadastro
     </ion-title>
@@ -32,7 +29,7 @@
       <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
 
-    <!-- Escrever E-mail -->
+    <!-- Escrever Data de Nascimento -->
     <ion-item>
       <ion-label stacked>Data de nascimento</ion-label>
       <ion-input type="date" [(ngModel)]="datanascimento" placeholder=""></ion-input>
@@ -58,7 +55,7 @@
 
     <!-- Escrever Altura -->
     <ion-item>
-      <ion-label stacked>Altura</ion-label>
+      <ion-label stacked>Altura (cm)</ion-label>
       <ion-input type="number" placeholder [(ngModel)]="altura"></ion-input>
     </ion-item>
 

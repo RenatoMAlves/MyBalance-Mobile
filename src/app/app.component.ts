@@ -7,6 +7,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { NotificationPage } from "../pages/notification/notification";
 import { CadastroPage } from "../pages/cadastro/cadastro";
+import { LoginPage } from '../pages/login/login';
+import { EditarPage } from '../pages/editar/editar';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +16,7 @@ import { CadastroPage } from "../pages/cadastro/cadastro";
 export class myBalance {
   @ViewChild(Nav) nav: Nav;
   
-  rootPage:any = TabsPage;
+  rootPage:any = LoginPage;
   
   pages: Array<{title: string, component: any}>;
 
@@ -28,7 +30,7 @@ export class myBalance {
     this.pages = [
       { title: 'Home', component: TabsPage },
       { title: 'Notificações', component: NotificationPage },
-      { title: 'Cadastro', component: CadastroPage}
+      { title: 'Editar Perfil', component: EditarPage}
     ];
   }
   openPage(page) {

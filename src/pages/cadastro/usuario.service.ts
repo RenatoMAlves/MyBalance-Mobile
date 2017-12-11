@@ -35,5 +35,26 @@ export class UsuarioService {
         return this.http.delete('http://localhost:3000/usuarios/' + idUsuario)
             .map(response => response.json())
             .catch((error:any) => Observable.throw(error.json().error || 'Erro ao conectar ao servidor.'));
-    }    
+    }
+    
+    getUsuariosByEmail(email: string){
+        return this.http.get('http://localhost:3000/usuarios?email='+email)
+        .map(response => response.json());
+    }
+
+    update(dadosUsuario: any) {
+        const usuario = {
+            id: dadosUsuario.id,
+            nome: dadosUsuario.nome,
+            email: dadosUsuario.email,
+            senha: dadosUsuario.senha,
+            datanascimento: dadosUsuario.datanascimento,
+            altura: dadosUsuario.altura,
+            sexo: dadosUsuario.sexo,
+            datacadastro: dadosUsuario.datacadastro,
+        }
+        return this.http.put('http://localhost:3000/usuarios/' + usuario.id, JSON.stringify(usuario), this.options)
+            .map(response => response.json())
+            .catch((error:any) => Observable.throw(error.json().error || 'Erro ao conectar ao servidor.'));
+    }
 }

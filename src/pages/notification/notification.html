@@ -21,6 +21,7 @@
     <ion-card-header>
       {{notificacao.id | json}}
     </ion-card-header>
+    <ion-card-header>
       {{notificacao.dataEnvio | json}}
     </ion-card-header>  
     <ion-card-content>
@@ -28,6 +29,9 @@
     </ion-card-content>
   </ion-card>
   <div padding>
-    <button ion-button block (click)="limparNotifications()">Limpar</button>
+    <button ion-button block color="danger" (click)="limparNotifications()">
+      <ion-icon name="md-trash"></ion-icon>
+      Limpar
+    </button>
   </div>
 </ion-content>

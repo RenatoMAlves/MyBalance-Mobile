@@ -5,6 +5,7 @@ import { TabsPage } from '../tabs/tabs';
 import { AlertController } from 'ionic-angular';
 import { UsuarioService } from './usuario.service';
 import { App, MenuController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the CadastroPage page.
@@ -19,7 +20,7 @@ import { App, MenuController } from 'ionic-angular';
   templateUrl: 'cadastro.html',
 })
 export class CadastroPage {
-  novo_usuario: any = new Usuario("","","","","",0,"","","");
+  novo_usuario: any = new Usuario("", "", "", "", "", 0, "", "", "");
   nome: string;
   email: string;
   datanascimento: string;
@@ -30,11 +31,11 @@ export class CadastroPage {
   sexo: string;
   datacadastro: string;
   status: string;
-  userId: any = 3;
+  userId: any;
 
   constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,
-     private usuarioService: UsuarioService,app: App, menu: MenuController) {
-      menu.enable(true);
+    private usuarioService: UsuarioService, app: App, menu: MenuController) {
+    menu.enable(true);
   }
 
   onSubmit() {
@@ -45,28 +46,59 @@ export class CadastroPage {
     this.datacadastro = this.datacadastro.replace(r, "-");
     this.datacadastro = this.datacadastro.replace(re, "");
 
-    if(this.verificaSenha()){
-      this.novo_usuario.nome = this.nome;
-      this.novo_usuario.email = this.email;
-      this.novo_usuario.datanascimento = this.datanascimento;
-      this.novo_usuario.cpf = this.cpf;
-      this.novo_usuario.senha = this.senha;
-      this.novo_usuario.altura = this.altura;
-      this.novo_usuario.sexo = this.sexo;
-      this.novo_usuario.datacadastro = this.datacadastro;
-      this.novo_usuario.status = false;
-      this.usuarioService.save(this.novo_usuario).subscribe(
-        usuario => console.log(usuario),
-        erro => console.log(erro));
-      this.navCtrl.push(TabsPage);
-    }
-    else{
+    if (this.verificaSenha()) {
+        this.novo_usuario.nome = this.nome;
+        this.novo_usuario.email = this.email;
+        this.novo_usuario.datanascimento = this.datanascimento;
+        this.novo_usuario.cpf = this.cpf;
+        this.novo_usuario.senha = this.senha;
+        this.novo_usuario.altura = this.altura;
+        this.novo_usuario.sexo = this.sexo;
+        this.novo_usuario.datacadastro = this.datacadastro;
+        this.novo_usuario.status = false;
+        this.usuarioService.getUsuariosByEmail(this.email).subscribe((data) => {
+          if (data.length == 0)
+            this.salvar()
+          else{
+            let alert = this.alertCtrl.create({
+              title: 'Já existe uma conta vinculada a este email',
+              subTitle: 'Por favor, utilize outro email para criar a conta',
+              buttons: ['OK']
+            });
+            alert.present();
+          }
+        },
+          (erro) => {
+            let alert = this.alertCtrl.create({
+              title: 'ERRO',
+              subTitle: erro,
+              buttons: ['OK']
+            });
+            alert.present();
+          });
+      }
+    else {
       this.showAlert();
     }
   }
 
-  verificaSenha(){
-    if(this.senha === this.repetir_senha)
+  salvar() {
+    this.usuarioService.save(this.novo_usuario).subscribe(
+      usuario => {
+        let alert = this.alertCtrl.create({
+          title: 'Conta criada com sucesso',
+          subTitle: '',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.navCtrl.push(LoginPage);
+      },
+      erro => console.log(erro)
+    );
+  }
+
+  verificaSenha() {
+    if (this.senha === this.repetir_senha)
       return true;
     else
       return false;
@@ -81,7 +113,7 @@ export class CadastroPage {
     alert.present();
   }
 
-  excluirConta(){
+  excluirConta() {
     this.usuarioService.delete(this.userId).subscribe(
       status => console.log('sucesso')
     );
