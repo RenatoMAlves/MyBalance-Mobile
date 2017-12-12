@@ -19,9 +19,6 @@
 <ion-content padding>
   <ion-card *ngFor="let notificacao of notifications | async">
     <ion-card-header>
-      {{notificacao.id | json}}
-    </ion-card-header>
-    <ion-card-header>
       {{notificacao.dataEnvio | json}}
     </ion-card-header>  
     <ion-card-content>
